@@ -1,5 +1,6 @@
 import 'package:e_commerce_app/utils/products.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -18,54 +19,74 @@ class _HomepageState extends State<Homepage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
-        child: Column(
-          children: <Widget>[
-            Expanded(
-              // flex: 2,
-              child: Container(
+        child: Container(
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('lib/assets/images/amazon.png'))),
+          child: Column(
+            children: [
+              Container(
+                decoration: BoxDecoration(color: Colors.orange),
+              ),
+              Expanded(
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
-                  child: Container(
-                    child: Row(
-                        children: allProduct
-                            .map((e) => Container(
-                                  alignment: Alignment.bottomCenter,
-                                  padding: const EdgeInsets.all(10),
-                                  margin: const EdgeInsets.only(
-                                    right: 10,
-                                    bottom: 5,
-                                  ),
-                                  decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                          image: NetworkImage(e['images'][0]),
-                                          fit: BoxFit.cover),
-                                      color: Colors.white),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(e['title']),
-                                      Text("\$ ${e['price']}"),
-                                    ],
-                                  ),
-                                ))
-                            .toList()),
-                  ),
+                  child: Row(
+                      children: allProduct
+                          .map((e) => Container(
+                                alignment: Alignment.bottomCenter,
+                                height: 250,
+                                width: 150,
+                                padding: const EdgeInsets.all(10),
+                                margin: const EdgeInsets.only(
+                                  right: 20,
+                                  bottom: 5,
+                                ),
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    border: Border.all(
+                                      color: Colors.black,
+                                    ),
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: Colors.grey,
+                                          spreadRadius: 5,
+                                          offset: Offset(5, 5),
+                                          blurRadius: 7)
+                                    ]),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Expanded(
+                                        child: Image(
+                                      image: NetworkImage(
+                                        e['thumbnail'],
+                                      ),
+                                    )),
+                                    Text(e['title']),
+                                    Text("\$ ${e['price']}"),
+                                    Expanded(
+                                      child: RatingBar.builder(
+                                        initialRating: e['rating'].toDouble(),
+                                        direction: Axis.horizontal,
+                                        itemSize: 17,
+                                        allowHalfRating: true,
+                                        itemCount: 5,
+                                        itemBuilder: (context, _) => Icon(
+                                          Icons.star,
+                                          color: Colors.amber,
+                                        ),
+                                        onRatingUpdate: (rating) {},
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ))
+                          .toList()),
                 ),
               ),
-            ),
-            SizedBox(
-              height: 2,
-            ),
-            Expanded(
-              flex: 3,
-              child: Container(
-                width: 500,
-                // padding: EdgeInsets.all(5),
-                decoration: BoxDecoration(color: Colors.greenAccent),
-                child: Text("Container-2"),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
