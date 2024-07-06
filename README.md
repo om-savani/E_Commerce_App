@@ -19,8 +19,6 @@ The "E-commerce" app is a simple and user-friendly application designed to facil
     - Star Rating
 - **Interaction:** Users can tap on a product to view its details on the Detail Page.
 
-![Homepage Screenshot](./mnt/data/Screenshot%202024-07-06%20174125.png)
-
 ### Detail Page
 - **Description:** The detail page provides more information about a selected product.
 - **Features:**
@@ -30,16 +28,12 @@ The "E-commerce" app is a simple and user-friendly application designed to facil
     - Detailed Description
 - **Interaction:** Users can view detailed information about the product they selected from the Homepage.
 
-![Detail Page Screenshot](./mnt/data/Screenshot%202024-07-06%20174319.png)
-
 ### Cart Page
 - **Description:** The cart page displays the items that the user has added to their shopping cart.
 - **Features:**
     - List of products added to the cart
     - Navigation options to go back to the Homepage or proceed with the purchase
 - **Interaction:** Users can view the items they have added to the cart.
-
-![Cart Page Screenshot](./mnt/data/Screenshot%202024-07-06%20174340.png)
 
 ## Conclusion
 The "E-commerce" app is designed to provide a seamless shopping experience. With its simple navigation and clear presentation of products, users can easily browse, view details, and manage their cart.
