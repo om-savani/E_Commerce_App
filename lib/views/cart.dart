@@ -1,4 +1,3 @@
-import 'package:e_commerce_app/views/homepage.dart';
 import 'package:flutter/material.dart';
 
 class CartPage extends StatefulWidget {
@@ -15,21 +14,19 @@ class _CartPageState extends State<CartPage> {
       appBar: AppBar(
         actions: [
           IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.home_filled,
               color: Colors.white,
             ),
             onPressed: () {
-              Route route = MaterialPageRoute(
-                builder: (context) => Homepage(),
-              );
-              Navigator.of(context).pushAndRemoveUntil(route, (route) => false);
+              Navigator.of(context)
+                  .pushNamedAndRemoveUntil('home_page', (route) => false);
             },
           )
         ],
         leading: IconButton(
           onPressed: () {
-            Navigator.of(context).pop();
+            Navigator.of(context).popAndPushNamed('detail_page');
           },
           icon: const Icon(
             Icons.arrow_back_ios_new_rounded,
@@ -37,7 +34,7 @@ class _CartPageState extends State<CartPage> {
           ),
         ),
         backgroundColor: Colors.blue,
-        title: Text(
+        title: const Text(
           "Cart",
           style: TextStyle(color: Colors.white),
         ),

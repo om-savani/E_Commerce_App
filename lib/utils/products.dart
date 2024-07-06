@@ -5536,5 +5536,5 @@ List<Map<String, dynamic>> allProduct = [
         "https://cdn.dummyjson.com/products/images/mobile-accessories/Apple%20Airpods/thumbnail.png"
   }
 ];
-List<String> allCategory =
-    allProduct.map((e) => e['category'].toString()).toSet().toList();
+// List<String> allCategory =
+//     allProduct.map((e) => e['category'].toString()).toSet().toList();

@@ -1,5 +1,4 @@
 import 'package:e_commerce_app/utils/products.dart';
-import 'package:e_commerce_app/views/detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
@@ -14,19 +13,18 @@ class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.sizeOf(context);
-
     return Scaffold(
-      drawer: Drawer(),
+      drawer: const Drawer(),
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
         title: const Text(
           "Home Page",
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
         actions: [
           IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.search,
               color: Colors.white,
             ),
@@ -48,10 +46,8 @@ class _HomepageState extends State<Homepage> {
                     children: allProduct
                         .map((e) => GestureDetector(
                               onTap: () {
-                                Route route = MaterialPageRoute(
-                                  builder: (context) => DetailPage(Product: e),
-                                );
-                                Navigator.of(context).push(route);
+                                Navigator.of(context)
+                                    .pushNamed('detail_page', arguments: e);
                               },
                               child: Container(
                                 alignment: Alignment.bottomCenter,
@@ -109,30 +105,30 @@ class _HomepageState extends State<Homepage> {
               ),
             ),
             const SizedBox(height: 10),
-            // SizedBox(
-            //   child: SingleChildScrollView(
-            //     scrollDirection: Axis.horizontal,
-            //     child: Row(
-            //       children: allCategory
-            //           .map(
-            //             (e) => const SizedBox(
-            //               child: Row(
-            //                 children: [
-            //                   Padding(
-            //                     padding: EdgeInsets.only(right: 20),
-            //                   ),
-            //                   CircleAvatar(
-            //                     radius: 40,
-            //                     backgroundColor: Colors.purple,
-            //                   ),
-            //                 ],
-            //               ),
-            //             ),
-            //           )
-            //           .toList(),
-            //     ),
-            //   ),
-            // ),
+            SizedBox(
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: allProduct
+                      .map(
+                        (e) => const SizedBox(
+                          child: Row(
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(right: 20),
+                              ),
+                              CircleAvatar(
+                                radius: 40,
+                                backgroundColor: Colors.purple,
+                              ),
+                            ],
+                          ),
+                        ),
+                      )
+                      .toList(),
+                ),
+              ),
+            ),
           ],
         ),
       ),
