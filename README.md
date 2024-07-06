@@ -1,16 +1,45 @@
-# e_commerce_app
+# E-commerce App - README
 
-A new Flutter project.
+## Introduction
+The "E-commerce" app is a simple and user-friendly application designed to facilitate online shopping. This app consists of three main screens: the Homepage, the Detail Page, and the Cart Page.
 
-## Getting Started
+## Screenshots
+- **Homepage:** Displays a list of products available for purchase.
+- **Detail Page:** Provides detailed information about a selected product.
+- **Cart Page:** Shows the items added to the cart for purchase.
 
-This project is a starting point for a Flutter application.
+## Screens Overview
 
-A few resources to get you started if this is your first Flutter project:
+### Homepage
+- **Description:** The homepage showcases a list of products with their images, names, prices, and ratings.
+- **Features:**
+    - Product Image
+    - Product Name
+    - Price
+    - Star Rating
+- **Interaction:** Users can tap on a product to view its details on the Detail Page.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+![Homepage Screenshot](./mnt/data/Screenshot%202024-07-06%20174125.png)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Detail Page
+- **Description:** The detail page provides more information about a selected product.
+- **Features:**
+    - Product Image
+    - Product Name
+    - Price
+    - Detailed Description
+- **Interaction:** Users can view detailed information about the product they selected from the Homepage.
+
+![Detail Page Screenshot](./mnt/data/Screenshot%202024-07-06%20174319.png)
+
+### Cart Page
+- **Description:** The cart page displays the items that the user has added to their shopping cart.
+- **Features:**
+    - List of products added to the cart
+    - Navigation options to go back to the Homepage or proceed with the purchase
+- **Interaction:** Users can view the items they have added to the cart.
+
+![Cart Page Screenshot](./mnt/data/Screenshot%202024-07-06%20174340.png)
+
+## Conclusion
+The "E-commerce" app is designed to provide a seamless shopping experience. With its simple navigation and clear presentation of products, users can easily browse, view details, and manage their cart.
