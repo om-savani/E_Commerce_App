@@ -12,7 +12,7 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-  String selected = "All";
+  String selected = "All Products";
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.sizeOf(context);
@@ -131,8 +131,8 @@ class _HomepageState extends State<Homepage> {
                       },
                       items: [
                         const DropdownMenuItem(
+                          value: 'All Products',
                           child: Text('All Products'),
-                          value: 'All',
                         ),
                         ...allCategory.map((e) {
                           return DropdownMenuItem(
@@ -151,7 +151,7 @@ class _HomepageState extends State<Homepage> {
                 ),
                 Catagory(
                   context: context,
-                  selected: "All",
+                  selected: "All Products",
                 ),
                 5.toHeight(),
                 Text(

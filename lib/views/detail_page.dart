@@ -89,7 +89,7 @@ class _DetailPageState extends State<DetailPage> {
                         ),
                         2.toWidth(),
                         Text(
-                          "${product['price'] + (product['price'] * (product['discountPercentage'] / 100))} \$",
+                          "${(product['price'] + (product['price'] * (product['discountPercentage'] / 100))).toStringAsFixed(2)} \$",
                           style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 17,

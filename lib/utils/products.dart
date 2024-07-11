@@ -1,4 +1,4 @@
-List<Map<String, dynamic>> allProduct = [
+List<Map> allProduct = [
   {
     "id": 1,
     "title": "Essence Mascara Lash Princess",

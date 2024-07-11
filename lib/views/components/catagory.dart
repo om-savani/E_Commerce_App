@@ -11,8 +11,9 @@ Widget Catagory({required BuildContext context, required selected}) {
           scrollDirection: Axis.horizontal,
           child: Row(
               children: allProduct
-                  .where((e) =>
-                      selected == 'All' ? true : selected == e['category'])
+                  .where((e) => selected == 'All Products'
+                      ? true
+                      : selected == e['category'])
                   .map((e) => GestureDetector(
                         onTap: () {
                           Navigator.of(context)
