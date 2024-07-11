@@ -8,3 +8,7 @@ extension MySize on int {
         width: toDouble(),
       );
 }
+
+extension Stringval on String {
+  String get tcase => replaceFirst(this[0], this[0].toUpperCase());
+}

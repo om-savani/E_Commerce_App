@@ -1,5 +1,6 @@
 import 'package:e_commerce_app/views/extension.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class DetailPage extends StatefulWidget {
   const DetailPage({super.key});
@@ -13,32 +14,39 @@ class _DetailPageState extends State<DetailPage> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     Map product = ModalRoute.of(context)?.settings.arguments as Map;
+    Color iconColor = Colors.black;
     return Scaffold(
       appBar: AppBar(
         actions: [
           IconButton(
             icon: const Icon(
               Icons.shopping_cart,
-              color: Colors.white,
+              color: Colors.black,
             ),
             onPressed: () {
               Navigator.of(context).pushNamed('CartPage');
             },
-          )
+          ),
         ],
-        backgroundColor: Colors.blue,
         leading: IconButton(
           onPressed: () {
             Navigator.of(context).pop();
           },
-          icon: const Icon(
-            Icons.arrow_back_ios_new_rounded,
-            color: Colors.white,
+          icon: const CircleAvatar(
+            radius: 20,
+            backgroundColor: Colors.white,
+            child: Align(
+              alignment: Alignment.center,
+              child: Icon(
+                Icons.arrow_back_ios_new_rounded,
+                color: Colors.black,
+              ),
+            ),
           ),
         ),
         title: const Text(
           'About Product',
-          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
         ),
       ),
       body: Column(
@@ -47,6 +55,14 @@ class _DetailPageState extends State<DetailPage> {
             image: NetworkImage(product['thumbnail']),
           ),
           20.toHeight(),
+          Align(
+            alignment: Alignment.center,
+            child: Text(
+              product['title'],
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+          ),
+          5.toHeight(),
           Expanded(
             child: Container(
               decoration: const BoxDecoration(
@@ -62,15 +78,109 @@ class _DetailPageState extends State<DetailPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(children: [
-                      Text(
-                        product['title'],
-                        style: const TextStyle(fontWeight: FontWeight.bold),
+                    Row(
+                      children: [
+                        const Text(
+                          " M.R.P: ",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                              color: Colors.grey),
+                        ),
+                        2.toWidth(),
+                        Text(
+                          "${product['price'] + (product['price'] * (product['discountPercentage'] / 100))} \$",
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 17,
+                              decoration: TextDecoration.lineThrough,
+                              color: Colors.grey),
+                        ),
+                      ],
+                    ),
+                    1.toHeight(),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20),
+                      child: Text(
+                        "Price: ${product['price']} \$",
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 17,
+                          color: Colors.red,
+                        ),
                       ),
-                      Text("${product['price']} \$"),
-                    ]),
+                    ),
                     5.toHeight(),
-                    Text(product['description'])
+                    Container(
+                      width: 60,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(color: Colors.grey, width: 2)),
+                      child: Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(1),
+                            child: RatingBar.builder(
+                              initialRating: product['rating'].toDouble(),
+                              direction: Axis.horizontal,
+                              itemSize: 17,
+                              allowHalfRating: true,
+                              itemCount: 1,
+                              itemBuilder: (context, _) => const Icon(
+                                Icons.star,
+                                color: Colors.amber,
+                              ),
+                              onRatingUpdate: (rating) {},
+                            ),
+                          ),
+                          Text(
+                            "${product['rating']}",
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    5.toHeight(),
+                    Text(product['description']),
+                    10.toHeight(),
+                    const Text(
+                      "Product information",
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                    ),
+                    5.toHeight(),
+                    Text(
+                      "Brand: ${product['brand']}",
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    3.toHeight(),
+                    Text(
+                      "Weight: ${product['weight']} Grams",
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const Spacer(),
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Column(
+                        children: [
+                          ElevatedButton(
+                            onPressed: () {},
+                            child: Text('Buy Now'),
+                            style: const ButtonStyle(),
+                          ),
+                          ElevatedButton(
+                            onPressed: () {},
+                            child: const Text('Add To Cart'),
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
