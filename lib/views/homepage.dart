@@ -13,6 +13,7 @@ class Homepage extends StatefulWidget {
 
 class _HomepageState extends State<Homepage> {
   String selected = "All Products";
+  RangeValues slidervalue = RangeValues(1, 10000);
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.sizeOf(context);
@@ -142,17 +143,59 @@ class _HomepageState extends State<Homepage> {
                         }),
                       ],
                     ),
+                    20.toWidth(),
+                    Visibility(
+                      visible: selected != "All Products",
+                      child: ActionChip(
+                        label: const Text("Clear"),
+                        avatar: const Icon(Icons.close),
+                        onPressed: () {
+                          selected = "All Products";
+                          slidervalue = const RangeValues(1, 10000);
+                          setState(() {});
+                        },
+                      ),
+                    )
                   ],
                 ),
-                5.toHeight(),
-                const Text(
-                  "All products",
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                Visibility(
+                  visible: selected != "All Products",
+                  child: Row(
+                    children: [
+                      Text(
+                        "From\n${slidervalue.start.toInt()}",
+                        textAlign: TextAlign.center,
+                      ),
+                      Expanded(
+                        child: RangeSlider(
+                            labels: RangeLabels(
+                              slidervalue.start.toInt().toString(),
+                              slidervalue.end.toInt().toString(),
+                            ),
+                            min: 1,
+                            max: 10000,
+                            values: slidervalue,
+                            onChanged: (val) {
+                              slidervalue = val;
+                              setState(() {});
+                            }),
+                      ),
+                      Text(
+                        "From\n${slidervalue.end.toInt()}",
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
                 ),
-                Catagory(
-                  context: context,
-                  selected: "All Products",
-                ),
+                // 5.toHeight(),
+                // const Text(
+                //   "All products",
+                //   style: TextStyle(fontWeight: FontWeight.bold),
+                // ),
+                // Catagory(
+                //   context: context,
+                //   selected: "All Products",
+                // ),
                 5.toHeight(),
                 Text(
                   selected.tcase,

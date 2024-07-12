@@ -1,8 +1,13 @@
+import 'dart:math';
+
 import 'package:e_commerce_app/utils/products.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
-Widget Catagory({required BuildContext context, required selected}) {
+Widget Catagory(
+    {required BuildContext context,
+    required selected,
+    RangeValues slidervalue = const RangeValues(1, 10000)}) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
@@ -13,7 +18,9 @@ Widget Catagory({required BuildContext context, required selected}) {
               children: allProduct
                   .where((e) => selected == 'All Products'
                       ? true
-                      : selected == e['category'])
+                      : selected == e['category'] &&
+                          e['price'] >= slidervalue.start &&
+                          e['price'] <= slidervalue.end)
                   .map((e) => GestureDetector(
                         onTap: () {
                           Navigator.of(context)
