@@ -5538,3 +5538,4 @@ List<Map> allProduct = [
 ];
 List<String> allCategory =
     allProduct.map((e) => e['category'].toString()).toSet().toList();
+List<Map> cartitem = [];

@@ -5,7 +5,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 Widget Catagory(
     {required BuildContext context,
     required selected,
-    RangeValues slidervalue = const RangeValues(1, 5000)}) {
+    RangeValues slidervalue = const RangeValues(1, 10000)}) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [

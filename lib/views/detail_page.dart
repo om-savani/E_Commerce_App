@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/utils/products.dart';
 import 'package:e_commerce_app/views/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -175,7 +176,12 @@ class _DetailPageState extends State<DetailPage> {
                             style: const ButtonStyle(),
                           ),
                           ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              if (!cartitem.contains(product)) {
+                                cartitem.add(product);
+                                product['qty'] = 1;
+                              }
+                            },
                             child: const Text('Add To Cart'),
                           ),
                         ],
