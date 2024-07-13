@@ -13,6 +13,7 @@ class DetailPage extends StatefulWidget {
 class _DetailPageState extends State<DetailPage> {
   @override
   Widget build(BuildContext context) {
+    // double totalprice = 0;
     Size size = MediaQuery.of(context).size;
     Map product = ModalRoute.of(context)?.settings.arguments as Map;
     Color iconColor = Colors.black;
